@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>example-02 mouse position</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script src="untils.js"></script>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+            mouse = captureMouse(canvas);
+
+            canvas.addEventListener('mousedown', function() {
+                console.log("x:" + mouse.x + ",y:" + mouse.y);
+            }, false)
+
+        }
+
+    </script>
+</body>
+
+</html>

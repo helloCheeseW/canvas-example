@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>example-01 mouse events</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+
+            function onMouseEvent(event) {
+                console.log(event.type)
+            }
+
+            canvas.addEventListener('mousedown', onMouseEvent, false); //鼠标按下
+            canvas.addEventListener('mouseup', onMouseEvent, false); //鼠标松开
+            canvas.addEventListener('click', onMouseEvent, false); //点击
+            canvas.addEventListener('dbclick', onMouseEvent, false); //双击
+            canvas.addEventListener('mousewheel', onMouseEvent, false); //滚轮
+            canvas.addEventListener('mousemove', onMouseEvent, false); //hover
+            canvas.addEventListener('mouseover', onMouseEvent, false); //鼠标移到
+            canvas.addEventListener('mouseout', onMouseEvent, false); //鼠标移出
+        }
+
+    </script>
+</body>
+
+</html>

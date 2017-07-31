@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>x轴运动的小球</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script src="../js/untils.js"></script>
+    <script src="../js/ball.js"></script>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas'),
+                context = canvas.getContext('2d'),
+                ball = new Ball(),
+                vx = 1,
+                vy = 1;
+
+            ball.x = 50;
+            ball.y = 50;
+
+            (function dramFrame() {
+                window.requestAnimationFrame(dramFrame, canvas);
+                context.clearRect(0, 0, canvas.height, canvas.width);
+
+                ball.x += vy;
+                ball.y += vy;
+                ball.draw(context)
+            }());
+        };
+    </script>
+</body>
+
+</html>
