@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <canvas id="canvas" width="400" height="400"></canvas>
+    <canvas id="canvas" width="500" height="500"></canvas>
     <textarea id="log"></textarea>
 
     <script src="../js/utils.js"></script>
@@ -29,7 +29,6 @@
                 var dx = targetX - ball.x;
                 if (Math.abs(dx) < 1) {
                     ball.x = targetX;
-                    window.cancelRequestAnimationFrame(animRequest);
                     log.value = "Animation done!";
                 } else {
                     var vx = dx * easing;

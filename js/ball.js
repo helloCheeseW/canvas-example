@@ -14,7 +14,7 @@ function Ball(radius, color) {
     this.rotation = 0;
     this.scaleX = 1;
     this.scaleY = 1;
-    this.color = parseColor(color);
+    this.color = 'red';
     this.lineWidth = 1;
 }
 
