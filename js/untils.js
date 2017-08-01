@@ -60,6 +60,7 @@ var colorToRGB = function (color, alpha) {
   }
 };
 
+//确定两近似圆形是否相交，相交true
 var containsPoint = function (rect, x, y) {
   return !(x < rect.x ||
            x > rect.x + rect.width ||
@@ -67,7 +68,7 @@ var containsPoint = function (rect, x, y) {
            y > rect.y + rect.height);
 };
 
-
+//确定两矩形是否相交，相交true
 var intersects = function (rectA, rectB) {
   return !(rectA.x + rectA.width < rectB.x ||
            rectB.x + rectB.width < rectA.x ||
