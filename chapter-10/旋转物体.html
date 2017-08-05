@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>旋转物体</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <script src="../js/untils.js"></script>
+    <script src="../js/ball.js"></script>
+    <script>
+        //单个物体
+        //        window.onload = function() {
+        //            var canvas = document.getElementById('canvas'),
+        //                context = canvas.getContext('2d'),
+        //                ball = new Ball(),
+        //                vr = 0.01, //旋转
+        //                cos = Math.cos(vr),
+        //                sin = Math.sin(vr),
+        //                centerX = canvas.width / 2,
+        //                centerY = canvas.height / 2;
+        //
+        //            ball.x = Math.random() * canvas.width;
+        //            ball.y = Math.random() * canvas.height;
+        //
+        //            (function drawFrame() {
+        //                window.requestAnimationFrame(drawFrame, canvas);
+        //                context.clearRect(0, 0, canvas.width, canvas.height);
+        //
+        //                var x1 = ball.x - centerX, //开始x位置
+        //                    y1 = ball.y - centerY, //开始y位置
+        //                    x2 = x1 * cos - y1 * sin, //物体旋转后的x值
+        //                    y2 = y1 * cos + x1 * sin; //物体旋转后的y值(相对于中心点坐标)
+        //
+        //                ball.x = centerX + x2;
+        //                ball.y = centerY + y2; //真正小球旋转后x,y坐标
+        //
+        //                ball.draw(context)
+        //            }())
+        //        }
+
+        //多个物体
+        window.onload = function() {
+            var canvas = document.getElementById('canvas'),
+                context = canvas.getContext('2d'),
+                mouse = captureMouse(canvas),
+                balls = [],
+                numBalls = 10,
+                vr = 0.01, //旋转
+                cos, sin,
+                centerX = canvas.width / 2,
+                centerY = canvas.height / 2;
+
+            for (var ball, i = 0; i < numBalls; i++) {
+                ball = new Ball();
+                ball.x = Math.random() * canvas.width;
+                ball.y = Math.random() * canvas.height;
+                balls.push(ball)
+            }
+
+            function move(ball) {
+                var x1 = ball.x - centerX,
+                    y1 = ball.y - centerY,
+                    x2 = x1*cos-y1*sin,
+                    y2 = y1*cos +x1*sin;
+                
+                ball.x = centerX+x2;
+                ball.y = centerY+y2;
+            }
+            
+            function draw(ball){
+                ball.draw(context);
+            }
+
+            (function drawFrame() {
+                window.requestAnimationFrame(drawFrame, canvas);
+                context.clearRect(0, 0, canvas.width, canvas.height);
+
+                var angle = (mouse.x - centerX)*0.00005;//控制旋转方向
+                cos = Math.cos(angle);
+                sin = Math.sin(angle);
+
+                balls.forEach(move);
+                balls.forEach(draw);
+            }())
+        }
+    </script>
+</body>
+
+</html>

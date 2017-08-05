@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>围绕中心点旋转</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script src="../js/untils.js"></script>
+    <script src="../js/ball.js"></script>
+    <script>
+        //已知角度半径
+        window.onload = function() {
+            var canvas = document.getElementById('canvas'),
+                context = canvas.getContext('2d'),
+                ball = new Ball(),
+                vr = 0.05,
+                angle = 0,
+                radius = 150,
+                canterX = canvas.width / 2,
+                canterY = canvas.height / 2;
+
+            //只知道物体位置&中心店位置
+//            var dx = ball.x - centerX,
+//                dy = ball.y - centerY,
+//                angle = Math.atan2(dy, dx),
+//                radius = Math.sqrt(dx * dx + dy * dy)
+
+                (function dramFrame() {
+                    window.requestAnimationFrame(drawFrame, canvas);
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+
+                    ball.x = canterX + Math.cos(angle) * radius;
+                    ball.y = canterY + Math.sin(angle) * radius;
+                    angle += vr;
+                    ball.draw(context)
+                }())
+        }
+
+    </script>
+
+</body>
+
+</html>
