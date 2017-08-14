@@ -21,7 +21,7 @@
                 bounce = -0.6;
             ball.x = 100;
             ball.y = 50;
-            //create 5 lines, position and rotate
+            //新建定位de五条线
             lines[0] = new Line(-50, 0, 50, 0);
             lines[0].x = 100;
             lines[0].y = 100;
@@ -43,6 +43,7 @@
             lines[4].y = 250;
             lines[4].rotation = -30 * Math.PI / 180;
 
+            //球在线上的效果
             function checkLine(line) {
                 var bounds = line.getBounds();
                 if (ball.x + ball.radius > bounds.x && ball.x - ball.radius < bounds.x + bounds.width) {
