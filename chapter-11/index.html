@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
 </head>
+
 <body>
     <h2>碰撞反应</h2>
-    
+
+    <div>
+        <p>动量守恒</p>
+        <p>
+            var vxTotal = vx0 - vx1; 
+            vx0 = ((ball0.mass - ball1.mass) * vx0 + 2 * ball1.mass * vx1) / (ball0.mass + ball1.mass); 
+            vx1 = vxTotal + vx0;
+        </p>
+    </div>
+
 </body>
+
 </html>
