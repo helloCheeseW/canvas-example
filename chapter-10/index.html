@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h2>坐标旋转 & 斜面反弹实现效果</h2>
+        <p>围绕中心点旋转（中心点/物体/半径/角度/）&（中心点/物体）</p>
+        <p>斜面反弹：旋转整个系统使反弹面水平，再反弹，最后转回来（物体坐标位置和速度向量都旋转）</p>
+        <p>ps.还涉及边界检测问题</p>
+    </div>
+
+    <div>
+        <h2>坐标旋转</h2>
+        <p> x1 = x*Math.cos(rotation)-y*Math.sin(rotation)</p>
+        <p> y1 = y*Math.cos(rotation)+x*Math.sin(rotation)</p>
+        
+        <h2>反向坐标旋转</h2>
+        <p>x1 = x*Math.cos(rotation)+y*Math.sin(rotation)</p>
+        <p> y1 = y*Math.cos(rotation)-x*Math.sin(rotation)</p>
+    </div>
+</body>
+</html>

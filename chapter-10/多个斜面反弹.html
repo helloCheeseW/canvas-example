@@ -46,26 +46,25 @@
             //球在线上的效果
             function checkLine(line) {
                 var bounds = line.getBounds();
+                //球不出边界
                 if (ball.x + ball.radius > bounds.x && ball.x - ball.radius < bounds.x + bounds.width) {
-                    //get angle, sine, and cosine
+                    //设置正弦余弦
                     var cos = Math.cos(line.rotation),
                         sin = Math.sin(line.rotation),
-                        //get position of ball, relative to line
+                        //确定相对于线，球的位置
                         x1 = ball.x - line.x,
                         y1 = ball.y - line.y,
-                        //rotate coordinates
+                        //旋转坐标，速率
                         y2 = cos * y1 - sin * x1,
-                        //rotate velocity
                         vy1 = cos * ball.vy - sin * ball.vx;
-                    //perform bounce with rotated values
+
+                    //执行反弹的角度
                     if (y2 > -ball.radius && y2 < vy1) {
-                        //rotate coordinates
                         var x2 = cos * x1 + sin * y1,
-                            //rotate velocity
                             vx1 = cos * ball.vx + sin * ball.vy;
                         y2 = -ball.radius;
                         vy1 *= bounce;
-                        //rotate everything back
+
                         x1 = cos * x2 - sin * y2;
                         y1 = cos * y2 + sin * x2;
                         ball.vx = cos * vx1 - sin * vy1;
@@ -80,15 +79,18 @@
                 checkLine(line);
                 line.draw(context);
             }
+            
+            //球的动画
             (function drawFrame() {
                 window.requestAnimationFrame(drawFrame, canvas);
                 context.clearRect(0, 0, canvas.width, canvas.height);
 
-                //normal motion code
+
                 ball.vy += gravity;
                 ball.x += ball.vx;
                 ball.y += ball.vy;
-                //bounce off ceiling, floor, and walls
+
+                //球反弹效果
                 if (ball.x + ball.radius > canvas.width) {
                     ball.x = canvas.width - ball.radius;
                     ball.vx *= bounce;
