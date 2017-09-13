@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>粒子&万有引力</h2>
+
+    <div>
+        <p>基本引力</p>
+        <p>
+            var vxTotal = vx0 - vx1; 
+            vx0 = ((ball0.mass - ball1.mass) * vx0 + 2 * ball1.mass * vx1) / (ball0.mass + ball1.mass); 
+            vx1 = vxTotal + vx0;
+        </p>
+    </div>
+    
+    <div>
+        <p>引力公式</p>
+        <p>
+           function spring(partA, partB) {
+                var dx = partB.x - partA.x,
+                    dy = partB.y - partA.y,
+                    dist = Math.sqrt(dx * dx + dy * dy);//distSQ=dx * dx + dy * dy
+                    force = partA.mass*partB.mass/distSQ
+                    ax = force * dx/dist,
+                    ay = force * dy/dist;
+    
+                           
+                    partA.vx += ax / partA.mass;
+                    partA.vy += ay / partA.mass;
+                    partB.vx -= ax / partB.mass;
+                    partB.vy -= ay / partB.mass;
+            }
+
+        </p>
+    </div>
+
+</body>
+
+</html>
